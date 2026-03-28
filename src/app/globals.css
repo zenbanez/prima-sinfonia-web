@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  /* Deep Purple Primary */
+  --color-primary: #6200EE;
+  --color-primary-hover: #7b1fa2;
+  /* Secondary Teal */
+  --color-secondary: #03DAC6;
+  
+  /* Glassmorphism Variables for Dark Mode Base */
+  --background: #0B0B14;
+  --foreground: #F8F9FA;
+  
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 16px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--background);
+  /* A subtle mesh/radial gradient so the glass actually has something to blur */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(98, 0, 238, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(3, 218, 198, 0.1), transparent 25%);
+  background-attachment: fixed;
+  color: var(--foreground);
+}
+
+/* Reusable Glass Utility Class */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* FullCalendar Glass Theme Overrides */
+.fc-glass-theme .fc-theme-standard td, 
+.fc-glass-theme .fc-theme-standard th { 
+  border-color: rgba(255,255,255,0.1) !important; 
+}
+.fc-glass-theme .fc-toolbar-title { 
+  color: white !important; 
+  font-weight: 700 !important; 
+}
+.fc-glass-theme .fc-button-primary { 
+  background-color: var(--color-primary) !important; 
+  border-color: transparent !important; 
+}
+.fc-glass-theme .fc-button-primary:hover { 
+  background-color: var(--color-primary-hover) !important; 
+}
+.fc-glass-theme .fc-col-header-cell-cushion { 
+  color: #cbd5e1 !important; 
+  font-weight: 500 !important; 
+}
+.fc-glass-theme .fc-timegrid-slot-label-cushion { 
+  color: #cbd5e1 !important; 
+}
+.fc-glass-theme .fc-v-event { 
+  border-radius: 6px !important; 
+  border: none !important; 
+  padding: 2px 4px !important; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; 
+}
+.fc-glass-theme .fc-event-main { 
+  font-weight: 500 !important; 
+}
+.fc-glass-theme .fc-timegrid-now-indicator-arrow,
+.fc-glass-theme .fc-timegrid-now-indicator-line {
+  border-color: var(--color-secondary) !important;
+}
