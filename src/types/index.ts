@@ -2,6 +2,30 @@ import { Timestamp } from "firebase/firestore";
 
 export type Role = "teacher" | "student";
 
+export interface Milestone {
+  id: string;
+  title: string;
+  category: "Technical Work" | "Performance" | "Discussion" | "Sight Reading" | "Aural Tests" | "Theory" | "Other";
+  completed: boolean;
+  targetDate?: Timestamp | Date | null;
+}
+
+export interface StudentProgress {
+  currentGrade: string;
+  instrument: string;
+  milestones: Milestone[];
+  lastUpdated: Timestamp | Date;
+}
+
+export interface PracticeLog {
+  id?: string;
+  studentId: string;
+  durationMinutes: number;
+  date: Timestamp | Date;
+  notes?: string;
+  createdAt: Timestamp | Date;
+}
+
 export interface AppUser {
   uid: string;
   email: string;
@@ -12,6 +36,10 @@ export interface AppUser {
   studentIds?: string[];
   // If student, they might have a list of assigned teacher UIDs
   teacherIds?: string[];
+  
+  // Progress Tracking Fields
+  progress?: StudentProgress;
+  isActive: boolean; // For current vs past students filtering
 }
 
 export interface Attachment {

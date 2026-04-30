@@ -1,0 +1,62 @@
+rules_version = '2';
+
+// Craft rules based on data in your Firestore database
+// Documentation: https://firebase.google.com/docs/storage/security
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // ========================
+    // Helper functions
+    // ========================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserData() {
+      // Access Firestore to check user role
+      return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isTeacher() {
+      return isAuthenticated() && getUserData().role == 'teacher';
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // ========================
+    // Path Rules
+    // ========================
+
+    // Lesson Attachments
+    // Structure: lessons/{teacherId}/{fileName}
+    match /lessons/{teacherId}/{fileName} {
+      // Students and Teachers can read lesson materials
+      allow read: if isAuthenticated();
+      // Only the teacher who owns the folder can upload/delete
+      allow write: if isTeacher() && request.auth.uid == teacherId;
+    }
+
+    // User Profile Data (e.g., profile pictures)
+    // Structure: users/{userId}/{fileName}
+    match /users/{userId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId);
+    }
+
+    // Shared Resources
+    // Structure: resources/{fileName}
+    match /resources/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isTeacher();
+    }
+
+    // Default deny for all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

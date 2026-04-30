@@ -19,6 +19,7 @@ import { AppUser, Lesson } from "@/types";
 
 const USERS_COLLECTION = "users";
 const LESSONS_COLLECTION = "lessons";
+const PRACTICE_LOGS_COLLECTION = "practice_logs";
 
 // ========================
 // USER SERVICES
@@ -43,6 +44,57 @@ export const getStudentsForTeacher = async (teacherUid: string): Promise<AppUser
   
   const snap = await getDocs(q);
   return snap.docs.map(d => ({ ...d.data(), uid: d.id } as AppUser));
+};
+
+export const updateStudentProgress = async (studentId: string, progress: any): Promise<void> => {
+  const userRef = doc(db, USERS_COLLECTION, studentId);
+  await updateDoc(userRef, {
+    progress: {
+      ...progress,
+      lastUpdated: serverTimestamp()
+    }
+  });
+};
+
+export const subscribeToStudentProgress = (
+  studentId: string,
+  onUpdate: (progress: any) => void
+): Unsubscribe => {
+  const userRef = doc(db, USERS_COLLECTION, studentId);
+  return onSnapshot(userRef, (snap) => {
+    if (snap.exists()) {
+      onUpdate(snap.data().progress || null);
+    }
+  });
+};
+
+// ========================
+// PRACTICE LOG SERVICES
+// ========================
+
+export const addPracticeLog = async (logData: any): Promise<string> => {
+  const logsRef = collection(db, PRACTICE_LOGS_COLLECTION);
+  const docRef = await addDoc(logsRef, {
+    ...logData,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+};
+
+export const subscribeToPracticeLogs = (
+  studentId: string,
+  onUpdate: (logs: any[]) => void
+): Unsubscribe => {
+  const q = query(
+    collection(db, PRACTICE_LOGS_COLLECTION),
+    where("studentId", "==", studentId),
+    orderBy("date", "desc")
+  );
+  
+  return onSnapshot(q, (snapshot) => {
+    const logs = snapshot.docs.map(d => ({ ...d.data(), id: d.id }));
+    onUpdate(logs);
+  });
 };
 
 // ========================

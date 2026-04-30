@@ -83,24 +83,24 @@ export default function LessonModal({ isOpen, onClose, onSuccess }: LessonModalP
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="w-full max-w-lg glass-panel p-8 rounded-3xl relative">
+      <div className="w-full max-w-lg glass-panel p-6 md:p-8 rounded-3xl relative overflow-y-auto max-h-[90vh]">
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors"
+          className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-white transition-colors"
         >
           ✕
         </button>
         
-        <h2 className="text-2xl font-bold text-white mb-6">Schedule Lesson</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Schedule Lesson</h2>
         
         {error && <div className="p-3 mb-4 text-sm text-red-200 bg-red-900/50 rounded-xl">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-sm md:text-base">
           <div>
             <label className="block text-sm text-slate-300 mb-1">Title</label>
             <input 
               type="text" required value={title} onChange={e => setTitle(e.target.value)}
-              className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)]"
+              className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)] placeholder-white/20"
               placeholder="e.g. Piano - Sonata in C Major"
             />
           </div>
@@ -111,24 +111,24 @@ export default function LessonModal({ isOpen, onClose, onSuccess }: LessonModalP
               required value={studentId} onChange={e => setStudentId(e.target.value)}
               className="w-full px-4 py-2 bg-[#1a1a2e] border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)]"
             >
-              <option value="" disabled>Select a student</option>
-              {students.map(s => <option key={s.uid} value={s.uid}>{s.name} ({s.email})</option>)}
+              <option value="" disabled className="bg-[#1a1a2e]">Select a student</option>
+              {students.map(s => <option key={s.uid} value={s.uid} className="bg-[#1a1a2e]">{s.name} ({s.email})</option>)}
             </select>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm text-slate-300 mb-1">Date</label>
               <input 
                 type="date" required value={date} onChange={e => setDate(e.target.value)}
-                className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)]"
+                className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)] color-scheme-dark"
               />
             </div>
             <div>
               <label className="block text-sm text-slate-300 mb-1">Time</label>
               <input 
                 type="time" required value={time} onChange={e => setTime(e.target.value)}
-                className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)]"
+                className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)] color-scheme-dark"
               />
             </div>
           </div>
@@ -139,10 +139,10 @@ export default function LessonModal({ isOpen, onClose, onSuccess }: LessonModalP
               value={duration} onChange={e => setDuration(e.target.value)}
               className="w-full px-4 py-2 bg-[#1a1a2e] border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)]"
             >
-              <option value="30">30 mins</option>
-              <option value="45">45 mins</option>
-              <option value="60">60 mins</option>
-              <option value="90">90 mins</option>
+              <option value="30" className="bg-[#1a1a2e]">30 mins</option>
+              <option value="45" className="bg-[#1a1a2e]">45 mins</option>
+              <option value="60" className="bg-[#1a1a2e]">60 mins</option>
+              <option value="90" className="bg-[#1a1a2e]">90 mins</option>
             </select>
           </div>
 
@@ -150,27 +150,29 @@ export default function LessonModal({ isOpen, onClose, onSuccess }: LessonModalP
             <label className="block text-sm text-slate-300 mb-1">Notes</label>
             <textarea 
               value={notes} onChange={e => setNotes(e.target.value)} rows={3}
-              className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)]"
+              className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-[var(--color-primary)] placeholder-white/20"
               placeholder="Practice goals, focus areas..."
             />
           </div>
 
           <div>
             <label className="block text-sm text-slate-300 mb-1">Attachment (PDF / Image)</label>
-            <input 
-              type="file" accept=".pdf,image/*" onChange={e => setFile(e.target.files?.[0] || null)}
-              className="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[var(--color-primary)] file:text-white hover:file:bg-purple-700 cursor-pointer"
-            />
-            {uploadProgress > 0 && uploadProgress < 100 && (
-              <div className="w-full bg-white/10 rounded-full h-2 mt-2">
-                <div className="bg-[var(--color-secondary)] h-2 rounded-full" style={{ width: `${uploadProgress}%` }}></div>
-              </div>
-            )}
+            <div className="flex flex-col gap-2">
+              <input 
+                type="file" accept=".pdf,image/*" onChange={e => setFile(e.target.files?.[0] || null)}
+                className="w-full text-xs md:text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs md:file:text-sm file:font-semibold file:bg-[var(--color-primary)] file:text-white hover:file:bg-purple-700 cursor-pointer"
+              />
+              {uploadProgress > 0 && uploadProgress < 100 && (
+                <div className="w-full bg-white/10 rounded-full h-2">
+                  <div className="bg-[var(--color-secondary)] h-2 rounded-full transition-all duration-300" style={{ width: `${uploadProgress}%` }}></div>
+                </div>
+              )}
+            </div>
           </div>
 
           <button 
             type="submit" disabled={loading}
-            className="w-full mt-6 px-4 py-3 bg-[var(--color-primary)] hover:bg-purple-700 text-white font-medium rounded-xl shadow-[0_0_15px_rgba(98,0,238,0.5)] transition-all disabled:opacity-50"
+            className="w-full mt-4 md:mt-6 px-4 py-3 bg-[var(--color-primary)] hover:bg-purple-700 text-white font-medium rounded-xl shadow-[0_0_15px_rgba(98,0,238,0.5)] transition-all disabled:opacity-50"
           >
             {loading ? "Scheduling..." : "Schedule Lesson"}
           </button>
