@@ -14,13 +14,11 @@ service firebase.storage {
       return request.auth != null;
     }
 
-    function getUserData() {
-      // Access Firestore to check user role
-      return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data;
-    }
-
     function isTeacher() {
-      return isAuthenticated() && getUserData().role == 'teacher';
+      // Teacher status comes only from the owner-set /teachers list in
+      // Firestore, never from a user's own profile (WS-0068/D-003)
+      return isAuthenticated()
+        && firestore.exists(/databases/(default)/documents/teachers/$(request.auth.uid));
     }
 
     function isOwner(userId) {

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:rules": "firebase emulators:exec --only firestore,storage --project demo-prima-sinfonia \"node --test tests/rules.test.mjs\""
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.20",
@@ -22,6 +23,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^20",
     "@types/react": "19.2.14",
@@ -29,6 +31,7 @@
     "@types/uuid": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "firebase-admin": "^13.10.0",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
     "typescript": "5.9.3"

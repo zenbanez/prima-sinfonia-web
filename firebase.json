@@ -18,5 +18,16 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "emulators": {
+    "firestore": {
+      "port": 8089
+    },
+    "storage": {
+      "port": 9189
+    },
+    "ui": {
+      "enabled": false
+    }
   }
 }

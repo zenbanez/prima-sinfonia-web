@@ -11,7 +11,6 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState<"student" | "teacher">("student");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -29,12 +28,13 @@ export default function SignupPage() {
       // 2. Update Auth Profile
       await updateProfile(user, { displayName: name });
 
-      // 3. Create document in Firestore Users collection with the chosen role
+      // 3. Create the user's profile. Sign-up always makes a student; teacher
+      //    status is granted only by the owner (WS-0068/D-003).
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name: name,
         email: email,
-        role: role,
+        role: "student",
         createdAt: new Date()
       });
 
@@ -87,38 +87,6 @@ export default function SignupPage() {
               className="w-full px-4 py-3 mt-1 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent text-white transition-all outline-none"
               placeholder="••••••••"
             />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-300 mb-3">I am a...</label>
-            <div className="flex space-x-4">
-              <label className="flex-1 cursor-pointer">
-                <input
-                  type="radio"
-                  name="role"
-                  value="student"
-                  checked={role === "student"}
-                  onChange={() => setRole("student")}
-                  className="peer sr-only"
-                />
-                <div className="text-center px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-slate-300 peer-checked:bg-[var(--color-primary)]/20 peer-checked:border-[var(--color-primary)] peer-checked:text-white transition-all">
-                  Student
-                </div>
-              </label>
-              <label className="flex-1 cursor-pointer">
-                <input
-                  type="radio"
-                  name="role"
-                  value="teacher"
-                  checked={role === "teacher"}
-                  onChange={() => setRole("teacher")}
-                  className="peer sr-only"
-                />
-                <div className="text-center px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-slate-300 peer-checked:bg-[var(--color-primary)]/20 peer-checked:border-[var(--color-primary)] peer-checked:text-white transition-all">
-                  Teacher
-                </div>
-              </label>
-            </div>
           </div>
 
           <button
