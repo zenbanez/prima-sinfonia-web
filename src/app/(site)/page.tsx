@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { TodoNotice } from "@/components/site/TodoNotice";
 import { site } from "@/content/site";
@@ -40,6 +41,9 @@ export default function HomePage() {
       />
 
       <section className="hero" aria-labelledby="hero-heading">
+        <div className="hero__backdrop" aria-hidden="true">
+          <Image src="/hero-music-class.webp" alt="" fill priority sizes="100vw" className="hero__image" />
+        </div>
         <div className="container hero__grid">
           <div>
             <h1 id="hero-heading">{site.fullName}</h1>
@@ -150,7 +154,10 @@ export default function HomePage() {
               </Link>
             </div>
             {site.address.value ? (
-              <p className="lead">{site.address.value}</p>
+              <address className="visit__address">
+                <span>{site.address.value}</span>
+                <span>{site.addressLandmark}</span>
+              </address>
             ) : (
               <TodoNotice label={site.address.todoLabel} candidates={site.address.candidates} />
             )}

@@ -24,7 +24,15 @@ export function SiteFooter() {
             <p>
               {site.city}, {site.province}, Philippines
             </p>
-            <p className="mast__todo">{site.address.value ?? site.address.todoLabel}</p>
+            {site.address.value ? (
+              <p>
+                {site.address.value}
+                <br />
+                {site.addressLandmark}
+              </p>
+            ) : (
+              <p className="mast__todo">{site.address.todoLabel}</p>
+            )}
             <p>
               {site.contact.person} ({site.contact.role})
             </p>

@@ -57,15 +57,13 @@ export const site = {
     phoneDisplay: "+63 952 480 7047",
     phoneHref: "tel:+639524807047",
   },
+  // Confirmed by the owner through zen, 19 Nov 2026
   address: {
-    status: "todo",
-    value: null,
-    todoLabel: "TODO: owner confirms studio address in Tacloban City",
-    candidates: [
-      "National Highway, Brgy. 77, Marasbaras, Tacloban City",
-      "Robinsons Marasbaras, Tacloban City",
-    ],
+    status: "confirmed",
+    value: "National Highway, Brgy. 77, Marasbaras, Tacloban City",
+    todoLabel: "",
   } as OwnerField<string>,
+  addressLandmark: "Across Robinsons Marasbaras",
   lcm: {
     badge: "An officially affiliated London College of Music examination location",
     officialUrl:
