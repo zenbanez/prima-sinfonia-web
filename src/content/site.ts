@@ -113,14 +113,14 @@ export const site = {
     {
       id: "cello",
       name: "Cello",
-      levels: [],
+      levels: ["Beginner"],
       summary:
         "Seated posture, bowing, tone, and reading in the bass clef, building toward ensemble and recital playing.",
     },
     {
       id: "musical-theatre",
       name: "Musical Theatre",
-      levels: [],
+      levels: ["Beginner", "Advanced"],
       summary:
         "Singing, speaking, and movement brought together to tell a story on stage, with songs chosen for each learner.",
     },

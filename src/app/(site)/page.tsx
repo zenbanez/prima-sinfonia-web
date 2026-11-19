@@ -68,15 +68,10 @@ export default function HomePage() {
             <ol aria-label="Classes offered">
               {site.instruments.map(inst => (
                 <li key={inst.id}>
-                  <div className="programme__row">
-                    <span className="programme__name">{inst.name}</span>
-                    {inst.levels.length > 0 && (
-                      <>
-                        <span className="programme__leader" aria-hidden="true" />
-                        <span className="programme__levels">{inst.levels.join(" and ")}</span>
-                      </>
-                    )}
-                  </div>
+                  <span className="programme__name">{inst.name}</span>
+                  {inst.levels.length > 0 && (
+                    <span className="programme__levels">{inst.levels.join(" and ")}</span>
+                  )}
                 </li>
               ))}
             </ol>
