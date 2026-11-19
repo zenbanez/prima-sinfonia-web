@@ -21,7 +21,6 @@ const dancingScript = Dancing_Script({
 const cinzel = Cinzel({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
 });
 
 const montserrat = Montserrat({
