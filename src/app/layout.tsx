@@ -36,6 +36,24 @@ export const metadata: Metadata = {
   },
   description:
     "Music classes for all ages in Tacloban City: piano, vocals, violin, cello and musical theatre. An officially affiliated London College of Music examination location.",
+  applicationName: "Prima Sinfonia Music School",
+  // Link previews on Facebook, Messenger, Viber and X. The share image and
+  // the icons are the files beside this layout (opengraph-image.png,
+  // twitter-image.png, icon.png, apple-icon.png, favicon.ico).
+  openGraph: {
+    type: "website",
+    siteName: "Prima Sinfonia Music School",
+    locale: "en_PH",
+    title: "Prima Sinfonia Music School — Tacloban City",
+    description:
+      "Music classes for all ages in Tacloban City: piano, vocals, violin, cello and musical theatre. An officially affiliated London College of Music examination location.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prima Sinfonia Music School — Tacloban City",
+    description:
+      "Music classes for all ages in Tacloban City: piano, vocals, violin, cello and musical theatre.",
+  },
 };
 
 export default function RootLayout({
