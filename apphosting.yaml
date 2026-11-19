@@ -33,3 +33,10 @@ env:
     availability:
       - BUILD
       - RUNTIME
+  # Pulse enquiry form: the tenant id lives in Secret Manager, never in this
+  # public repo. Create it first: apphosting:secrets:set prima-pulse-tenant-id
+  - variable: NEXT_PUBLIC_PULSE_TENANT_ID
+    secret: prima-pulse-tenant-id
+    availability:
+      - BUILD
+      - RUNTIME
