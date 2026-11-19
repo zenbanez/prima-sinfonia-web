@@ -95,35 +95,3 @@ body {
 .fc-glass-theme .fc-timegrid-now-indicator-line {
   border-color: var(--color-secondary) !important;
 }
-
-.site-shell {
-  background-color: var(--site-bg);
-  color: var(--site-ink);
-  min-height: 100vh;
-  overflow-x: clip;
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-}
-
-/* Poster-style headings: serif capitals in navy */
-.site-shell h1,
-.site-shell h2,
-.site-display {
-  font-family: var(--font-display), Georgia, serif;
-  letter-spacing: 0.02em;
-}
-
-/* A short gold rule under page titles, like the poster's flourishes */
-.site-shell main h1::after {
-  content: "";
-  display: block;
-  width: 4.5rem;
-  height: 2px;
-  margin-top: 0.75rem;
-  background: linear-gradient(90deg, var(--site-accent), transparent);
-}
-
-/* Gold hairline frame for feature panels */
-.site-frame {
-  border: 1px solid var(--site-accent);
-  box-shadow: inset 0 0 0 5px var(--site-surface), inset 0 0 0 6px var(--site-accent-soft);
-}

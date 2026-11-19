@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function LcmExamsPage() {
   return (
-    <div className="space-y-10">
+    <div className="page-inner space-y-10">
       <header className="space-y-3">
         <p className="inline-block rounded-full border border-[var(--site-accent)] bg-[var(--site-accent-soft)]/50 px-3.5 py-1 text-xs font-semibold text-[var(--site-primary)]">
           {site.lcm.badge}
@@ -40,7 +40,7 @@ export default function LcmExamsPage() {
               rel="noopener noreferrer"
               className="font-semibold text-[var(--site-primary)] underline decoration-[var(--site-accent)] underline-offset-4"
             >
-              Verify on the official University of West London LCME Philippines list →
+              Verify on the official University of West London LCME Philippines list
             </a>
           </p>
         </article>

@@ -57,15 +57,13 @@ export const site = {
     phoneDisplay: "+63 952 480 7047",
     phoneHref: "tel:+639524807047",
   },
+  // Confirmed by the owner through zen, 19 Nov 2026
   address: {
-    status: "todo",
-    value: null,
-    todoLabel: "TODO: owner confirms studio address in Tacloban City",
-    candidates: [
-      "National Highway, Brgy. 77, Marasbaras, Tacloban City",
-      "Robinsons Marasbaras, Tacloban City",
-    ],
+    status: "confirmed",
+    value: "National Highway, Brgy. 77, Marasbaras, Tacloban City",
+    todoLabel: "",
   } as OwnerField<string>,
+  addressLandmark: "Across Robinsons Marasbaras",
   lcm: {
     badge: "An officially affiliated London College of Music examination location",
     officialUrl:
@@ -115,14 +113,14 @@ export const site = {
     {
       id: "cello",
       name: "Cello",
-      levels: [],
+      levels: ["Beginner"],
       summary:
         "Seated posture, bowing, tone, and reading in the bass clef, building toward ensemble and recital playing.",
     },
     {
       id: "musical-theatre",
       name: "Musical Theatre",
-      levels: [],
+      levels: ["Beginner", "Advanced"],
       summary:
         "Singing, speaking, and movement brought together to tell a story on stage, with songs chosen for each learner.",
     },

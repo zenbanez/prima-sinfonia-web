@@ -15,7 +15,7 @@ export default function EnquirePage() {
   const tenantId = getPulseTenantId();
 
   return (
-    <div className="space-y-8">
+    <div className="page-inner space-y-8">
       <header className="space-y-3">
         <h1 className="text-3xl font-bold text-[var(--site-primary)] sm:text-4xl">
           {site.enquire.heading}

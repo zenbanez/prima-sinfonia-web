@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function LessonsPage() {
   return (
-    <div className="space-y-10">
+    <div className="page-inner space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl font-bold text-[var(--site-primary)] sm:text-4xl">
           Lessons &amp; Fees
@@ -40,7 +40,7 @@ export default function LessonsPage() {
                   {inst.name}
                 </h3>
                 {inst.levels.length > 0 && (
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[var(--site-accent-strong)]">
+                  <p className="mt-1 text-sm font-medium text-[var(--site-accent-strong)]">
                     Levels: {inst.levels.join(" & ")}
                   </p>
                 )}

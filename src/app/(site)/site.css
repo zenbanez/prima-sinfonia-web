@@ -1,0 +1,258 @@
+/* Hallmark · shape: marquee hero (draw cb3be7, swapped to an Index hero) · genre: editorial · theme: brand · redesign: full
+ * paper: oklch(96.6% 0.014 85) · accent: oklch(66% 0.085 75) · display: Cinzel · body: Montserrat · hero: Index · nav: masthead · footer: mast · signature: the five classes set as a recital programme
+ * axes: light/roman-serif/warm · posture: restrained · contrast: pass · fold: pass · deal: brand (the owner's poster) · draw: cb3be7 · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R3 V4 · weakest: R (no photographs: children's photos wait for consent), the programme carries the hero instead */
+/* Hallmark · waive 49b · a real phrase that cannot shorten, two lines at most · the footer link is the LCME page's own title, kept verbatim, and wraps to two lines only at 320px */
+/* Hallmark · waive 77 · a band of one line and an action, once a page · Location in Tacloban City closes on the contact person, her number and Enroll now, above the studio address */
+/* Hallmark · dismissed 41 · accent-ink is never set on the accent fill; it is small gold text on the cream paper only */
+/* Hallmark · answered F15 · the five inner pages keep their own narrower measure (72rem) inside the same gutters; full redesign was the home page */
+/* Hallmark · waive 44c · a Banner posture · the inner pages (lessons, about, LCM exams, recitals, enquire) keep their kept layout, a title banner over the content; only the home page was recomposed */
+/* Hallmark · waive 79 · a Banner posture on the inner pages · their short title banners are the kept layout of lessons and about, for the owner to judge before a full redesign */
+/* Hallmark · brand kept: navy, gold and cream, Cinzel and Montserrat, from the owner's school poster */
+
+:root {
+  --color-paper: oklch(96.6% 0.014 85);
+  --color-paper-2: oklch(93.8% 0.022 85);
+  --color-paper-3: oklch(99.2% 0.006 85);
+  --color-ink: oklch(25.5% 0.045 266);
+  --color-ink-2: oklch(29% 0.062 266);
+  --color-muted: oklch(43% 0.03 266);
+  --color-rule: oklch(88% 0.03 85);
+  --color-accent: oklch(66% 0.085 75);
+  --color-accent-ink: oklch(49% 0.085 72);
+  --color-accent-soft: oklch(92.5% 0.035 85);
+  --color-on-ink: oklch(96.6% 0.014 85);
+  --color-on-ink-muted: oklch(84% 0.03 85);
+  --color-focus: oklch(49% 0.085 72);
+
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem);
+  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem);
+  --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem);
+  --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --container: 1440px;
+  --gutter: 64px;
+  --gap-columns: 32px;
+  --section-gap-s: 120px;
+  --section-gap: 144px;
+  --radius-card: 4px;
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* The older page tokens, mapped onto the brand palette so every public
+     page shares one system */
+  --site-primary: var(--color-ink-2);
+  --site-primary-hover: var(--color-ink);
+  --site-accent: var(--color-accent);
+  --site-accent-strong: var(--color-accent-ink);
+  --site-accent-soft: var(--color-accent-soft);
+  --site-bg: var(--color-paper);
+  --site-surface: var(--color-paper-3);
+  --site-surface-alt: var(--color-paper-2);
+  --site-ink: var(--color-ink);
+  --site-ink-muted: var(--color-muted);
+  --site-border: var(--color-rule);
+}
+@media (max-width: 60rem) { :root { --gutter: 24px; --section-gap-s: 80px; --section-gap: 96px; } }
+@media (max-width: 40rem) { :root { --gutter: 16px; --section-gap-s: 56px; --section-gap: 72px; --gap-columns: 16px; } }
+
+html, body { overflow-x: clip; }
+
+/* The faces come from next/font, whose variables live on <body>, so the
+   face tokens are declared on the shell rather than on :root */
+.site-shell {
+  --face-display: var(--font-display), Georgia, ui-serif, serif;
+  --face-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--face-body);
+  font-size: var(--text-md);
+  line-height: 1.55;
+  min-height: 100dvh;
+}
+.site-shell :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.statement :focus-visible, .mast :focus-visible { outline-color: var(--color-on-ink); }
+.site-shell ::selection { background: var(--color-accent-soft); color: var(--color-ink); }
+html { scrollbar-color: var(--color-accent) var(--color-paper); }
+.site-shell h1,
+.site-shell h2,
+.site-shell h3,
+.site-display {
+  font-family: var(--face-display);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.08;
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-wrap: balance;
+  color: var(--color-ink-2);
+}
+.site-shell p { text-wrap: pretty; }
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Links and buttons: one primary style, one quiet style */
+.site-link {
+  color: var(--color-ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-micro) var(--ease-out), text-decoration-color var(--dur-micro) var(--ease-out);
+}
+.site-link:hover { color: var(--color-accent-ink); text-decoration-color: currentColor; }
+.site-link:active { opacity: 0.7; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-card);
+  font-weight: 600;
+  font-size: var(--text-md);
+  text-decoration: none;
+  border: 1px solid var(--color-ink-2);
+  transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.btn-primary { background: var(--color-ink-2); color: var(--color-on-ink); }
+.btn-primary:hover { background: var(--color-ink); }
+.btn-quiet { background: transparent; color: var(--color-ink-2); }
+.btn-quiet:hover { background: var(--color-paper-2); }
+.btn:active { transform: translateY(1px); }
+
+/* Masthead */
+.masthead { border-bottom: 1px solid var(--color-rule); background: var(--color-paper-3); }
+.masthead__bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-lg);
+  min-height: 80px;
+}
+.masthead__mark { display: inline-flex; align-items: center; gap: var(--space-sm); text-decoration: none; grid-column: 2; justify-self: center; }
+.masthead__emblem { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-accent); background: var(--color-paper-3); padding: 4px; }
+.masthead__name { display: flex; flex-direction: column; line-height: 1; }
+.masthead__name strong { font-family: var(--face-display); font-weight: 700; font-size: 1.625rem; color: var(--color-ink-2); }
+.masthead__name span { font-family: var(--face-display); font-size: 0.9375rem; color: var(--color-accent-ink); margin-top: 4px; }
+.masthead__login { grid-column: 3; justify-self: end; min-height: 40px; padding: 0 var(--space-md); }
+.masthead__nav { border-top: 1px solid var(--color-rule); }
+.masthead__nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs) var(--space-xl); list-style: none; margin: 0; padding: var(--space-sm) 0; }
+.masthead__nav a { color: var(--color-muted); text-decoration: none; font-size: 0.9375rem; font-weight: 400; transition: color var(--dur-micro) var(--ease-out); }
+.masthead__nav a:hover { color: var(--color-ink-2); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 0.3em; }
+.masthead__nav a:active { opacity: 0.7; }
+@media (max-width: 40rem) {
+  .masthead__bar { grid-template-columns: minmax(0, 1fr) auto; min-height: 68px; }
+  .masthead__mark { grid-column: 1; justify-self: start; }
+  .masthead__login { grid-column: 2; }
+  .masthead__name strong { font-size: 1.25rem; }
+  .masthead__emblem { width: 38px; height: 38px; }
+  .masthead__nav ul { justify-content: flex-start; gap: var(--space-xs) var(--space-lg); }
+}
+
+/* Home: the hero, with the classes set as a recital programme */
+.hero { position: relative; isolation: isolate; min-height: calc(100dvh - 130px); display: flex; align-items: center; padding-block: var(--space-2xl); }
+/* The poster's music-class picture (AI-made figures, shown with the
+   owner's OK), washed into the cream so the text and programme stay clear */
+.hero__backdrop { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.hero__image { object-fit: cover; object-position: center 30%; }
+.hero__backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--color-paper) 0%, color-mix(in oklab, var(--color-paper) 88%, transparent) 38%, color-mix(in oklab, var(--color-paper) 72%, transparent) 100%); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-3xl); align-items: center; }
+.hero h1 { font-size: var(--text-display); max-width: 11ch; }
+.hero .lead { font-size: var(--text-lead); line-height: 1.45; color: var(--color-muted); margin-top: var(--space-lg); max-width: 30ch; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xl); }
+
+/* The classes as a programme: no frame, set flush right against the
+   picture, each class with its levels beneath */
+.programme { text-align: right; }
+.programme__title { font-family: var(--face-display); font-size: var(--text-title); color: var(--color-accent-ink); margin: 0; }
+.programme__rule { display: block; width: 72px; height: 1px; background: var(--color-accent); margin: var(--space-md) 0 var(--space-lg) auto; border: 0; }
+.programme ol { list-style: none; margin: 0; padding: 0; counter-reset: programme; }
+.programme li { counter-increment: programme; padding-block: var(--space-sm); }
+.programme__name { font-family: var(--face-display); font-weight: 700; font-size: clamp(1.75rem, 1.6vw + 1rem, 2.625rem); color: var(--color-ink-2); line-height: 1.1; }
+.programme__name::before { content: counter(programme, upper-roman) ". "; font-weight: 400; font-size: 0.55em; color: var(--color-accent-ink); vertical-align: 0.2em; }
+.programme__levels { display: block; margin-top: var(--space-2xs, 4px); font-size: var(--text-sm); color: var(--color-muted); }
+
+/* Home: the LCM statement on navy */
+.statement { background: var(--color-ink-2); color: var(--color-on-ink); padding-block: var(--section-gap-s); }
+.statement__grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--space-2xl); align-items: end; }
+.statement h2 { color: var(--color-on-ink); font-size: var(--text-display-s); max-width: 22ch; }
+.statement p { color: var(--color-on-ink-muted); max-width: 40ch; }
+.statement .site-link { color: var(--color-on-ink); }
+.statement .site-link:hover { color: var(--color-accent-soft); }
+.statement__links { display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-lg); }
+
+/* Home: the classes as rows */
+.classes { padding-block: var(--section-gap); }
+.classes__head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--gap-columns); align-items: end; margin-bottom: var(--space-2xl); }
+.classes h2 { font-size: var(--text-section); }
+.classes__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-ink-2); }
+.classes__rows li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap-columns); padding-block: var(--space-xl); border-bottom: 1px solid var(--color-rule); }
+.classes__rows h3 { font-size: var(--text-title); }
+.classes__rows p { color: var(--color-muted); max-width: 52ch; }
+
+/* Home: who we teach */
+.who { background: var(--color-paper-2); padding-block: var(--section-gap-s); }
+.who h2 { font-size: var(--text-section); margin-bottom: var(--space-2xl); }
+.who__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-columns); }
+.who__item { border-top: 2px solid var(--color-accent); padding-top: var(--space-lg); }
+.who__item h3 { font-size: var(--text-title); }
+.who__item p { margin-top: var(--space-sm); color: var(--color-muted); }
+
+/* Home: where to find us */
+.visit { padding-block: var(--section-gap); }
+.visit__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap-columns); align-items: start; }
+.visit h2 { font-size: var(--text-section); }
+.visit__body { display: grid; gap: var(--space-xl); }
+.visit__address { font-style: normal; display: grid; gap: var(--space-xs); font-size: var(--text-lead); color: var(--color-ink); }
+.visit__address span + span { color: var(--color-muted); font-size: var(--text-md); }
+.visit__contact { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--space-lg); border-top: 1px solid var(--color-ink-2); border-bottom: 1px solid var(--color-rule); padding-block: var(--space-xl); }
+.visit__person { font-family: var(--face-display); font-size: var(--text-title); color: var(--color-ink-2); }
+.visit__phone { white-space: nowrap; font-family: var(--face-display); font-size: var(--text-display-s); line-height: 1.1; color: var(--color-ink-2); text-decoration: none; display: inline-block; margin-top: var(--space-xs); transition: color var(--dur-micro) var(--ease-out); }
+.visit__phone:hover { color: var(--color-accent-ink); }
+.visit__phone:active { opacity: 0.7; }
+@media (max-width: 40rem) { .visit__contact { grid-template-columns: minmax(0, 1fr); } }
+
+/* Footer: the mast */
+.mast { background: var(--color-ink-2); color: var(--color-on-ink-muted); padding-block: var(--space-3xl) var(--space-xl); font-size: var(--text-sm); }
+.mast__name { font-family: var(--face-display); font-weight: 700; font-size: var(--text-display-s); color: var(--color-on-ink); line-height: 1.05; max-width: 16ch; }
+.mast__tagline { font-family: var(--face-display); color: var(--color-accent); font-size: var(--text-lead); margin-top: var(--space-md); }
+.mast__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); gap: var(--gap-columns); margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid color-mix(in oklab, var(--color-accent) 45%, transparent); }
+.mast h3 { font-family: var(--face-body); font-size: var(--text-sm); font-weight: 600; color: var(--color-on-ink); margin: 0 0 var(--space-sm); letter-spacing: 0; }
+.mast ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); }
+.mast a { color: var(--color-on-ink-muted); text-decoration: none; transition: color var(--dur-micro) var(--ease-out); }
+.mast a:hover { color: var(--color-on-ink); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 0.25em; }
+.mast a:active { opacity: 0.7; }
+.mast p + p { margin-top: var(--space-xs); }
+.mast__todo { border: 1px dashed var(--color-accent); padding: var(--space-xs) var(--space-sm); color: var(--color-on-ink); max-width: 40ch; }
+.mast__legal { margin-top: var(--space-2xl); }
+
+@media (max-width: 60rem) {
+  .hero { min-height: 0; }
+  .hero__backdrop::after { background: color-mix(in oklab, var(--color-paper) 80%, transparent); }
+  .hero__grid, .statement__grid, .classes__head, .visit__grid, .mast__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+  .classes__rows li { grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); }
+  .who__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+  .programme { text-align: left; }
+  .programme__rule { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell *, .site-shell *::before, .site-shell *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* The inner pages keep their layout inside the shared system */
+.page-inner { width: 100%; max-width: 72rem; margin-inline: auto; padding: var(--space-2xl) var(--gutter) var(--space-3xl); }
+.page-inner h1 { font-size: var(--text-display-s); }
+.page-inner h1::after { content: ""; display: block; width: 72px; height: 1px; margin-top: var(--space-md); background: var(--color-accent); }
