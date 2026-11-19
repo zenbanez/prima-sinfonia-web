@@ -4,9 +4,9 @@ import { TodoNotice } from "@/components/site/TodoNotice";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Music Lessons in Tacloban City — Violin, Piano & Voice",
+  title: "Music Classes in Tacloban City — Piano, Vocals, Violin, Cello & Musical Theatre",
   description:
-    "Prima Sinfonia offers one-on-one music lessons in Tacloban for violin, piano, and voice, preparing children, teens, and adults as an officially affiliated London College of Music examination location.",
+    "Prima Sinfonia offers music classes for all ages in Tacloban: piano, vocals, violin, cello and musical theatre, preparing children, teens, and adults as an officially affiliated London College of Music examination location.",
 };
 
 export default function HomePage() {
@@ -39,7 +39,7 @@ export default function HomePage() {
         }}
       />
 
-      <section className="rounded-3xl border border-[var(--site-border)] bg-[var(--site-surface)] p-6 shadow-sm sm:p-10">
+      <section className="site-frame rounded-3xl bg-[var(--site-surface)] p-6 shadow-sm sm:p-10">
         <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-[var(--site-accent)] bg-[var(--site-accent-soft)]/50 px-3.5 py-1.5 text-xs font-semibold text-[var(--site-primary)]">
           <span>{site.lcm.badge}</span>
           <a
@@ -52,17 +52,17 @@ export default function HomePage() {
           </a>
         </div>
 
-        <h1 className="mt-5 font-script text-4xl font-bold text-[var(--site-primary)] sm:text-6xl">
-          {site.name}
+        <h1 className="mt-6 text-3xl font-bold uppercase leading-tight text-[var(--site-primary)] sm:text-5xl">
+          {site.fullName}
         </h1>
         <p className="mt-3 max-w-2xl text-xl font-semibold text-[var(--site-ink)] sm:text-2xl">
-          Violin, piano, and voice music lessons in {site.city}.
+          Music classes for all ages in {site.city}.
         </p>
 
         <div className="mt-4 max-w-xl">
           {site.tagline.value ? (
-            <p className="text-base italic text-[var(--site-ink-muted)]">
-              &ldquo;{site.tagline.value}&rdquo;
+            <p className="text-base font-medium tracking-wide text-[var(--site-accent-strong)]">
+              {site.tagline.value}
             </p>
           ) : (
             <TodoNotice
@@ -77,7 +77,7 @@ export default function HomePage() {
             href="/enquire"
             className="inline-flex items-center justify-center rounded-xl bg-[var(--site-primary)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--site-primary-hover)]"
           >
-            Enquire
+            Enroll now
           </Link>
           <Link
             href="/lessons"
@@ -121,7 +121,7 @@ export default function HomePage() {
             id="instruments-heading"
             className="text-2xl font-bold text-[var(--site-ink)]"
           >
-            Instruments &amp; LCM pathway
+            Classes &amp; LCM pathway
           </h2>
           <Link
             href="/lcm-exams"
@@ -140,9 +140,11 @@ export default function HomePage() {
               <h3 className="text-lg font-bold text-[var(--site-ink)]">
                 {inst.name}
               </h3>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[var(--site-accent)]">
-                {inst.levels.join(" · ")}
-              </p>
+              {inst.levels.length > 0 && (
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[var(--site-accent-strong)]">
+                  {inst.levels.join(" · ")}
+                </p>
+              )}
               <p className="mt-2 text-sm leading-relaxed text-[var(--site-ink-muted)]">
                 {inst.summary}
               </p>

@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Enquire & Enrol — Music Lessons Tacloban",
   description:
-    "Enquire about violin, piano, and voice music lessons in Tacloban City and LCM exam preparation at Prima Sinfonia.",
+    "Enquire about piano, vocals, violin, cello and musical theatre classes in Tacloban City and LCM exam preparation at Prima Sinfonia.",
 };
 
 export default function EnquirePage() {
@@ -45,6 +45,16 @@ export default function EnquirePage() {
               </li>
             ))}
           </ul>
+
+          <div className="border-t border-[var(--site-border)] pt-4 text-sm text-[var(--site-ink-muted)]">
+            Prefer to call or text? {site.contact.person} ({site.contact.role}):{" "}
+            <a
+              href={site.contact.phoneHref}
+              className="font-semibold text-[var(--site-primary)] underline underline-offset-4"
+            >
+              {site.contact.phoneDisplay}
+            </a>
+          </div>
 
           <div className="border-t border-[var(--site-border)] pt-4 text-xs text-[var(--site-ink-muted)]">
             Already an enrolled student or parent?{" "}

@@ -25,8 +25,13 @@ export function SiteHeader() {
               priority
             />
           </span>
-          <span className="truncate font-script text-2xl text-[var(--site-primary)] sm:text-4xl">
-            {site.name}
+          <span className="site-display flex min-w-0 flex-col leading-none text-[var(--site-primary)]">
+            <span className="truncate text-lg font-bold uppercase sm:text-2xl">
+              {site.name}
+            </span>
+            <span className="mt-1 truncate text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[var(--site-accent-strong)] sm:text-xs">
+              Music School
+            </span>
           </span>
         </Link>
 

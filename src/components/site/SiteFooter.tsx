@@ -6,9 +6,10 @@ export function SiteFooter() {
     <footer className="mt-16 border-t border-[var(--site-border)] bg-[var(--site-surface)] py-10 text-sm text-[var(--site-ink-muted)]">
       <div className="mx-auto grid w-full max-w-5xl gap-8 px-4 sm:grid-cols-3 sm:px-6">
         <div className="space-y-2">
-          <p className="font-script text-2xl text-[var(--site-primary)]">
-            {site.name}
+          <p className="site-display text-xl font-bold uppercase text-[var(--site-primary)]">
+            {site.fullName}
           </p>
+          <p className="text-[var(--site-accent-strong)]">{site.tagline.value}</p>
           <p>{site.lcm.badge}.</p>
           <p className="text-xs">
             <a
@@ -27,6 +28,17 @@ export function SiteFooter() {
           <p>{site.city}, {site.province}, Philippines</p>
           <p className="rounded-md border border-dashed border-[var(--site-accent)] bg-[var(--site-accent-soft)]/45 px-2.5 py-1.5 text-xs text-[var(--site-ink)]">
             {site.address.value ?? site.address.todoLabel}
+          </p>
+          <p className="pt-2 font-semibold text-[var(--site-ink)]">
+            {site.contact.person} ({site.contact.role})
+          </p>
+          <p>
+            <a
+              href={site.contact.phoneHref}
+              className="underline decoration-[var(--site-accent)] underline-offset-4 hover:text-[var(--site-primary)]"
+            >
+              {site.contact.phoneDisplay}
+            </a>
           </p>
         </div>
 
