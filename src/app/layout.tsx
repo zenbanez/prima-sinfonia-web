@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
-import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,8 +18,13 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Prima Sinfonia",
-  description: "Music School Management Platform",
+  metadataBase: new URL("https://primasinfonia.banezglobal.com"),
+  title: {
+    default: "Prima Sinfonia Music School — Tacloban City",
+    template: "%s | Prima Sinfonia Music School",
+  },
+  description:
+    "Music lessons in Tacloban City for violin, piano, and voice. An officially affiliated London College of Music examination location.",
 };
 
 export default function RootLayout({
@@ -33,7 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} antialiased`}
       >
-        <AuthProvider>{children}</AuthProvider>
+        {children}
       </body>
     </html>
   );
