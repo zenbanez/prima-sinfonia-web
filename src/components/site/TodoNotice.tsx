@@ -7,7 +7,7 @@ export function TodoNotice({ label, candidates }: { label: string; candidates?: 
       <p className="font-semibold text-[var(--site-primary)]">{label}</p>
       {candidates && candidates.length > 0 ? (
         <p className="mt-1 text-xs text-[var(--site-ink-muted)]">
-          Options under owner review: {candidates.join(" · ")}
+          Options under owner review: {candidates.join("; ")}
         </p>
       ) : null}
     </div>

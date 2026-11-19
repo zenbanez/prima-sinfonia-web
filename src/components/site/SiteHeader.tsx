@@ -10,53 +10,43 @@ const NAV_LINKS = [
   { href: "/enquire", label: "Enquire" },
 ] as const;
 
+// A masthead, like the poster's head: the emblem and the school's name
+// centred over a rule, the pages beneath.
 export function SiteHeader() {
   return (
-    <header className="border-b border-[var(--site-border)] bg-[var(--site-surface)]">
-      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
-        <Link href="/" className="order-1 flex min-w-0 items-center gap-2.5 sm:gap-3">
-          <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--site-border)] bg-white p-1.5 shadow-sm sm:h-12 sm:w-12">
+    <header className="masthead">
+      <div className="container masthead__bar">
+        <Link href="/" className="masthead__mark">
+          <span className="masthead__emblem relative block shrink-0 overflow-hidden">
             <Image
               src="/logo.png"
               alt="Prima Sinfonia emblem"
               fill
-              sizes="(max-width: 640px) 40px, 48px"
+              sizes="44px"
               className="object-contain p-1"
               priority
             />
           </span>
-          <span className="site-display flex min-w-0 flex-col leading-none text-[var(--site-primary)]">
-            <span className="truncate text-lg font-bold uppercase sm:text-2xl">
-              {site.name}
-            </span>
-            <span className="mt-1 truncate text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[var(--site-accent-strong)] sm:text-xs">
-              Music School
-            </span>
+          <span className="masthead__name">
+            <strong>{site.name}</strong>
+            <span>Music School</span>
           </span>
         </Link>
 
-        <Link
-          href="/login"
-          className="order-2 shrink-0 whitespace-nowrap rounded-lg border border-[var(--site-primary)] px-3 py-1.5 text-sm font-semibold text-[var(--site-primary)] transition-colors hover:bg-[var(--site-primary)] hover:text-white sm:order-3 sm:px-3.5"
-        >
+        <Link href="/login" className="btn btn-quiet masthead__login">
           Log in
         </Link>
-
-        <nav
-          aria-label="Primary navigation"
-          className="order-3 flex w-full flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--site-border)] pt-3 text-sm font-medium text-[var(--site-ink-muted)] sm:order-2 sm:ml-auto sm:w-auto sm:border-t-0 sm:pt-0"
-        >
-          {NAV_LINKS.map(item => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition-colors hover:text-[var(--site-primary)]"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
       </div>
+
+      <nav aria-label="Primary navigation" className="masthead__nav">
+        <ul className="container">
+          {NAV_LINKS.map(item => (
+            <li key={item.href}>
+              <Link href={item.href}>{item.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }

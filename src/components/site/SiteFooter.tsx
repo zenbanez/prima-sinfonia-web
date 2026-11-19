@@ -1,86 +1,65 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 
+// The mast: the school's name large on navy, the links beneath.
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-[var(--site-border)] bg-[var(--site-surface)] py-10 text-sm text-[var(--site-ink-muted)]">
-      <div className="mx-auto grid w-full max-w-5xl gap-8 px-4 sm:grid-cols-3 sm:px-6">
-        <div className="space-y-2">
-          <p className="site-display text-xl font-bold uppercase text-[var(--site-primary)]">
-            {site.fullName}
-          </p>
-          <p className="text-[var(--site-accent-strong)]">{site.tagline.value}</p>
-          <p>{site.lcm.badge}.</p>
-          <p className="text-xs">
-            <a
-              href={site.lcm.officialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-[var(--site-accent)] underline-offset-4 hover:text-[var(--site-primary)]"
-            >
-              {site.lcm.countryPageLabel}
-            </a>
-          </p>
-        </div>
+    <footer className="mast">
+      <div className="container">
+        <p className="mast__name">{site.fullName}</p>
+        <p className="mast__tagline">{site.tagline.value}</p>
 
-        <div className="space-y-2">
-          <p className="font-semibold text-[var(--site-ink)]">Studio</p>
-          <p>{site.city}, {site.province}, Philippines</p>
-          <p className="rounded-md border border-dashed border-[var(--site-accent)] bg-[var(--site-accent-soft)]/45 px-2.5 py-1.5 text-xs text-[var(--site-ink)]">
-            {site.address.value ?? site.address.todoLabel}
-          </p>
-          <p className="pt-2 font-semibold text-[var(--site-ink)]">
-            {site.contact.person} ({site.contact.role})
-          </p>
-          <p>
-            <a
-              href={site.contact.phoneHref}
-              className="underline decoration-[var(--site-accent)] underline-offset-4 hover:text-[var(--site-primary)]"
-            >
-              {site.contact.phoneDisplay}
-            </a>
-          </p>
-        </div>
-
-        <div className="space-y-2">
-          <p className="font-semibold text-[var(--site-ink)]">Explore</p>
-          <ul className="space-y-1.5">
-            <li>
-              <Link href="/lessons" className="hover:text-[var(--site-primary)]">
-                Lessons &amp; Fees
-              </Link>
-            </li>
-            <li>
-              <Link href="/lcm-exams" className="hover:text-[var(--site-primary)]">
-                LCM Examinations
-              </Link>
-            </li>
-            <li>
-              <Link href="/enquire" className="hover:text-[var(--site-primary)]">
-                Enquire / Enrol
-              </Link>
-            </li>
-            <li>
-              <a
-                href={site.facebookUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--site-primary)]"
-              >
-                Facebook Page
+        <div className="mast__grid">
+          <div>
+            <p>{site.lcm.badge}.</p>
+            <p>
+              <a href={site.lcm.officialUrl} target="_blank" rel="noopener noreferrer">
+                {site.lcm.countryPageLabel}
               </a>
-            </li>
-            <li>
-              <Link href="/login" className="hover:text-[var(--site-primary)]">
-                Student &amp; Teacher Log in
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+            </p>
+          </div>
 
-      <div className="mx-auto mt-8 w-full max-w-5xl border-t border-[var(--site-border)] px-4 pt-6 text-xs text-[var(--site-ink-muted)] sm:px-6">
-        <p>© {new Date().getFullYear()} {site.fullName} · {site.city}</p>
+          <div>
+            <h3>Studio</h3>
+            <p>
+              {site.city}, {site.province}, Philippines
+            </p>
+            <p className="mast__todo">{site.address.value ?? site.address.todoLabel}</p>
+            <p>
+              {site.contact.person} ({site.contact.role})
+            </p>
+            <p>
+              <a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a>
+            </p>
+          </div>
+
+          <div>
+            <h3>Explore</h3>
+            <ul>
+              <li>
+                <Link href="/lessons">Lessons &amp; Fees</Link>
+              </li>
+              <li>
+                <Link href="/lcm-exams">LCM Examinations</Link>
+              </li>
+              <li>
+                <Link href="/enquire">Enquire / Enrol</Link>
+              </li>
+              <li>
+                <a href={site.facebookUrl} target="_blank" rel="noopener noreferrer">
+                  Facebook Page
+                </a>
+              </li>
+              <li>
+                <Link href="/login">Student &amp; Teacher Log in</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="mast__legal">
+          © {new Date().getFullYear()} {site.fullName}, {site.city}
+        </p>
       </div>
     </footer>
   );

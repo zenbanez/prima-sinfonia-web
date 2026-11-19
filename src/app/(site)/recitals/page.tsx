@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RecitalsPage() {
   return (
-    <div className="space-y-10">
+    <div className="page-inner space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl font-bold text-[var(--site-primary)] sm:text-4xl">
           Recitals &amp; Studio Performances

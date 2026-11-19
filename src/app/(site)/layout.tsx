@@ -2,6 +2,7 @@ import { PulseBubble } from "@/components/site/PulseBubble";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { getPulseTenantId } from "@/content/site";
+import "./site.css";
 
 export default function SiteLayout({
   children,
@@ -11,9 +12,7 @@ export default function SiteLayout({
   return (
     <div className="site-shell flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
-        {children}
-      </main>
+      <main className="site-main flex-1">{children}</main>
       <SiteFooter />
       <PulseBubble tenantId={getPulseTenantId()} />
     </div>
