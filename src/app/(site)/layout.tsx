@@ -1,5 +1,7 @@
+import { PulseBubble } from "@/components/site/PulseBubble";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { getPulseTenantId } from "@/content/site";
 
 export default function SiteLayout({
   children,
@@ -13,6 +15,7 @@ export default function SiteLayout({
         {children}
       </main>
       <SiteFooter />
+      <PulseBubble tenantId={getPulseTenantId()} />
     </div>
   );
 }

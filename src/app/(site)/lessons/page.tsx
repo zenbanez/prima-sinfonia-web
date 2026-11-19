@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: "Lessons & Fees — Music Lessons Tacloban",
   description:
-    "Violin, piano, and voice music lessons in Tacloban City at Prima Sinfonia, with beginner and advanced pathways aligned to LCM exams.",
+    "Piano, vocals, violin, cello and musical theatre classes in Tacloban City at Prima Sinfonia, with pathways aligned to LCM exams.",
 };
 
 export default function LessonsPage() {
@@ -27,7 +27,7 @@ export default function LessonsPage() {
           id="offerings-heading"
           className="text-2xl font-bold text-[var(--site-ink)]"
         >
-          Instruments Taught
+          Classes Offered
         </h2>
         <div className="grid gap-5 sm:grid-cols-3">
           {site.instruments.map(inst => (
@@ -39,9 +39,11 @@ export default function LessonsPage() {
                 <h3 className="text-xl font-bold text-[var(--site-primary)]">
                   {inst.name}
                 </h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[var(--site-accent)]">
-                  Levels: {inst.levels.join(" & ")}
-                </p>
+                {inst.levels.length > 0 && (
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[var(--site-accent-strong)]">
+                    Levels: {inst.levels.join(" & ")}
+                  </p>
+                )}
                 <p className="mt-3 text-sm leading-relaxed text-[var(--site-ink-muted)]">
                   {inst.summary}
                 </p>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script, Cinzel, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +17,18 @@ const dancingScript = Dancing_Script({
   subsets: ["latin"],
 });
 
+// Public site typography, matched to the school's poster
+const cinzel = Cinzel({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-body",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://primasinfonia.banezglobal.com"),
   title: {
@@ -24,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | Prima Sinfonia Music School",
   },
   description:
-    "Music lessons in Tacloban City for violin, piano, and voice. An officially affiliated London College of Music examination location.",
+    "Music classes for all ages in Tacloban City: piano, vocals, violin, cello and musical theatre. An officially affiliated London College of Music examination location.",
 };
 
 export default function RootLayout({
@@ -35,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${cinzel.variable} ${montserrat.variable} antialiased`}
       >
         {children}
       </body>

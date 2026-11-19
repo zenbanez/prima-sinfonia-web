@@ -8,7 +8,7 @@ export type OwnerField<T = string> = {
 };
 
 export interface InstrumentOffering {
-  readonly id: "violin" | "piano" | "voice";
+  readonly id: "piano" | "voice" | "violin" | "cello" | "musical-theatre";
   readonly name: string;
   readonly levels: readonly string[];
   readonly summary: string;
@@ -45,15 +45,18 @@ export const site = {
   province: "Leyte",
   countryCode: "PH",
   facebookUrl: "https://www.facebook.com/PrimaSinfonia/",
+  // From the owner's own school poster (19 Nov 2026)
   tagline: {
-    status: "todo",
-    value: null,
-    todoLabel: "TODO: owner picks canonical tagline",
-    candidates: [
-      "Music from the heart",
-      "Music is the language of the soul",
-    ],
+    status: "confirmed",
+    value: "Cultivating Passion, Harmony & Artistry",
+    todoLabel: "",
   } as OwnerField<string>,
+  contact: {
+    person: "Ms. Khea",
+    role: "Contact person",
+    phoneDisplay: "+63 952 480 7047",
+    phoneHref: "tel:+639524807047",
+  },
   address: {
     status: "todo",
     value: null,
@@ -76,7 +79,7 @@ export const site = {
   audiences: [
     {
       title: "Children & Parents in Tacloban",
-      body: "Foundational violin, piano, and voice tuition for school-age learners — combining musical ear training, notation, and steady encouragement.",
+      body: "Foundational piano, voice, violin, and cello tuition for school-age learners — combining musical ear training, notation, and steady encouragement.",
     },
     {
       title: "Teens & Adult Learners",
@@ -89,13 +92,6 @@ export const site = {
   ],
   instruments: [
     {
-      id: "violin",
-      name: "Violin",
-      levels: ["Beginner", "Advanced"],
-      summary:
-        "Posture, bow control, intonation, repertoire building, and graded preparation toward London College of Music milestones.",
-    },
-    {
       id: "piano",
       name: "Piano",
       levels: ["Beginner"],
@@ -104,10 +100,31 @@ export const site = {
     },
     {
       id: "voice",
-      name: "Voice",
+      name: "Vocals",
       levels: ["Beginner", "Advanced"],
       summary:
         "Healthy breath support, vocal placement, pitch accuracy, expressive phrasing, and recital or examination readiness.",
+    },
+    {
+      id: "violin",
+      name: "Violin",
+      levels: ["Beginner", "Advanced"],
+      summary:
+        "Posture, bow control, intonation, repertoire building, and graded preparation toward London College of Music milestones.",
+    },
+    {
+      id: "cello",
+      name: "Cello",
+      levels: [],
+      summary:
+        "Seated posture, bowing, tone, and reading in the bass clef, building toward ensemble and recital playing.",
+    },
+    {
+      id: "musical-theatre",
+      name: "Musical Theatre",
+      levels: [],
+      summary:
+        "Singing, speaking, and movement brought together to tell a story on stage, with songs chosen for each learner.",
     },
   ] as readonly InstrumentOffering[],
   lessonFormat: {
@@ -149,20 +166,20 @@ export const site = {
   enquire: {
     heading: "Enquire or Enrol",
     intro:
-      "Send us a short note to ask about violin, piano, or voice lessons, studio schedules, or London College of Music exam preparation in Tacloban City.",
+      "Send us a short note to ask about piano, vocals, violin, cello, or musical theatre classes, studio schedules, or London College of Music exam preparation in Tacloban City.",
     suggestedDetails: [
       "Parent or guardian's name (or your name if enquiring as an adult learner)",
       "Preferred contact method (phone number or email)",
       "Learner's age",
-      "Instrument of interest (violin, piano, or voice)",
+      "Class of interest (piano, vocals, violin, cello, or musical theatre)",
     ],
     pulseHeading: "Enquire with Prima Sinfonia",
     pulseSubheading:
-      "Share a parent or learner name, how to reach you, the learner's age, and which instrument you are interested in.",
+      "Share a parent or learner name, how to reach you, the learner's age, and which class you are interested in.",
     pulsePlaceholder:
-      "Parent name, phone/email, learner's age, and instrument (violin, piano, or voice)...",
+      "Parent name, phone/email, learner's age, and class (piano, vocals, violin, cello, or musical theatre)...",
     pulseButtonText: "Send enquiry",
-    pulseAccentColor: "#4A148C",
+    pulseAccentColor: "#1B2A4E",
   },
 } as const;
 
