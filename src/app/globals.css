@@ -98,4 +98,5 @@ body {
   background-color: var(--site-bg);
   color: var(--site-ink);
   min-height: 100vh;
+  overflow-x: clip;
 }
